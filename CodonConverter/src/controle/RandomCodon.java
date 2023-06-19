@@ -7,12 +7,12 @@ import modelo.IRandomCodon;
 
 public class RandomCodon implements IRandomCodon {
 
-	public static ArrayList<String> codonsTabela;
-	private static ConverterDAO instanciar;
+	private static ArrayList<String> codonsTabela;
+	private static RandomCodon instanciar;
 
-	public static ConverterDAO getInstance() {
+	public static RandomCodon getInstance() {
 		if (instanciar == null) {
-			instanciar = new ConverterDAO();
+			instanciar = new RandomCodon();
 			codonsTabela = new ArrayList<>();
 
 			codonsTabela.add("AAA");
@@ -100,25 +100,36 @@ public class RandomCodon implements IRandomCodon {
 
 	@Override
 	public boolean inserir(String px) {
-		// TODO Auto-generated method stub
+		if (px != null && !px.isEmpty()) {
+			codonsTabela.add(px.toUpperCase());
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public boolean alterar(String px) {
-		// TODO Auto-generated method stub
+		for (String string : CODONS) {
+			if (px.toUpperCase().equals(string)) {
+				codonsTabela.remove(px.toUpperCase());
+				return true;
+			}
+		}
 		return false;
 	}
 
 	@Override
 	public boolean excluir(String px) {
-		// TODO Auto-generated method stub
-		return false;
+		return codonsTabela.remove(px.toUpperCase());
 	}
 
 	@Override
 	public ArrayList<String> mostrar() {
-		// TODO Auto-generated method stub
-		return null;
+		return codonsTabela;
 	}
+	
 }
+
+
+	
+		
