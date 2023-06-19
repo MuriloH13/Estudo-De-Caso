@@ -42,14 +42,19 @@ public class FramePrincipal {
 		frame.setBounds(500, 200, 750, 590);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		frame.setVisible(true);
 
 		JTextArea txtSequencia = new JTextArea(10, 10);
+		txtSequencia.setLineWrap(true);
+		txtSequencia.setWrapStyleWord(true);
 		txtSequencia.setBounds(10, 56, 710, 158);
 		frame.getContentPane().add(txtSequencia);
 
 
 		JTextArea txtResultado = new JTextArea(20, 10);
+		txtResultado.setLineWrap(true);
+		txtResultado.setWrapStyleWord(true);
 		txtResultado.setBounds(10, 294, 710, 246);
 		frame.getContentPane().add(txtResultado);
 		
