@@ -42,14 +42,19 @@ public class FramePrincipal {
 		frame.setBounds(500, 200, 750, 590);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setResizable(false);
 		frame.setVisible(true);
 
 		JTextArea txtSequencia = new JTextArea(10, 10);
-		txtSequencia.setBounds(10, 56, 710, 158);
+		txtSequencia.setLineWrap(true);
+		txtSequencia.setWrapStyleWord(true);
+		txtSequencia.setBounds(65, 56, 600, 158);
 		frame.getContentPane().add(txtSequencia);
 
 
 		JTextArea txtResultado = new JTextArea(20, 10);
+		txtResultado.setLineWrap(true);
+		txtResultado.setWrapStyleWord(true);
 		txtResultado.setBounds(10, 294, 710, 246);
 		frame.getContentPane().add(txtResultado);
 		
@@ -127,8 +132,20 @@ public class FramePrincipal {
 		lblCodon.setBounds(10, 28, 46, 14);
 		frame.getContentPane().add(lblCodon);
 
+		JButton btnInserir = new JButton("Inserir");
+		btnInserir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RandomCodon rand = RandomCodon.getInstance();
+				String codon = txtCodon.getText();
+				rand.inserir(codon);
+			}
+		});
+		btnInserir.setBounds(163, 24, 89, 23);
+		frame.getContentPane().add(btnInserir);
 		
-		
+		JLabel lblAlterar = new JLabel("Alterar:");
+		lblAlterar.setBounds(10, 28, 46, 70);
+		frame.getContentPane().add(lblAlterar);
 
 		JButton btnNewButton_1 = new JButton("Alterar");
 		btnNewButton_1.addActionListener(new ActionListener() {
